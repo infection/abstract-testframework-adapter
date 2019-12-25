@@ -1,6 +1,6 @@
 {
     "name": "infection/abstract-testframework-adapter",
-    "description": "Abstract Test Framework Adapter",
+    "description": "Abstract Test Framework Adapter for Infection",
     "type": "library",
     "license": "BSD-3-Clause",
     "authors": [
