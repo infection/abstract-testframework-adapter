@@ -10,11 +10,11 @@
         }
     ],
     "config": {
-        "platform": {
-            "php": "7.2.9"
-        },
-        "sort-packages": true
+    "platform": {
+        "php": "7.2.9"
     },
+    "sort-packages": true
+},
     "autoload": {
         "psr-4": {
             "Infection\\AbstractTestFramework\\": "src/"
