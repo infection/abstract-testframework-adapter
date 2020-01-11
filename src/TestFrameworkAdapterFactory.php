@@ -35,9 +35,6 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework;
 
-/**
- * @internal
- */
 interface TestFrameworkAdapterFactory
 {
     public static function create(
