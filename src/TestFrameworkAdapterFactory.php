@@ -41,10 +41,14 @@ interface TestFrameworkAdapterFactory
         string $testFrameworkExecutable,
         string $tmpDir,
         string $testFrameworkConfigPath,
-        string $testFrameworkConfigDir,
+        ?string $testFrameworkConfigDir,
         string $jUnitFilePath,
         string $projectDir,
         array $sourceDirectories,
         bool $skipCoverage
     ): TestFrameworkAdapter;
+
+    public static function getAdapterName(): string;
+
+    public static function getExecutableName(): string;
 }
