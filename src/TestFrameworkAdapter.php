@@ -35,12 +35,10 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework;
 
-use Infection\AbstractTestFramework\Coverage\CoverageLineData;
+use Infection\AbstractTestFramework\Coverage\TestLocation;
 
 interface TestFrameworkAdapter
 {
-    public const JUNIT_FILE_NAME = 'junit.xml';
-
     public function getName(): string;
 
     public function testsPass(string $output): bool;
@@ -55,7 +53,7 @@ interface TestFrameworkAdapter
     public function getInitialTestRunCommandLine(string $extraOptions, array $phpExtraArgs, bool $skipCoverage): array;
 
     /**
-     * @param CoverageLineData[] $coverageTests
+     * @param TestLocation[] $coverageTests
      *
      * @return string[]
      */

@@ -35,40 +35,36 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework\Coverage;
 
-final class CoverageLineData
+final class TestLocation
 {
-    /**
-     * @var string
-     */
-    public $testMethod;
+    private $method;
+    private $filePath;
+    private $executionTime;
 
-    /**
-     * @var string|null
-     */
-    public $testFilePath;
-
-    /**
-     * @var float|null
-     */
-    public $time;
-
-    public static function withTestMethod(string $testMethod): self
+    public function __construct(string $method, ?string $filePath, ?float $executionTime)
     {
-        $self = new self();
-
-        $self->testMethod = $testMethod;
-
-        return $self;
+        $this->method = $method;
+        $this->filePath = $filePath;
+        $this->executionTime = $executionTime;
     }
 
-    public static function with(string $testMethod, string $testFilePath, float $time): self
+    public static function forTestMethod(string $testMethod): self
     {
-        $self = new self();
+        return new self($testMethod, null, null);
+    }
 
-        $self->testMethod = $testMethod;
-        $self->testFilePath = $testFilePath;
-        $self->time = $time;
+    public function getMethod(): string
+    {
+        return $this->method;
+    }
 
-        return $self;
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
+    }
+
+    public function getExecutionTime(): ?float
+    {
+        return $this->executionTime;
     }
 }
