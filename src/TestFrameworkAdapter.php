@@ -39,9 +39,6 @@ use Infection\AbstractTestFramework\Coverage\TestLocation;
 
 interface TestFrameworkAdapter
 {
-    // TODO: deprecate this and provide a JUnit report file path depending on the test framework?
-    public const JUNIT_FILE_NAME = 'junit.xml';
-
     public function getName(): string;
 
     public function testsPass(string $output): bool;
