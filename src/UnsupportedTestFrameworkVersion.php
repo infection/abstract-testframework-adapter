@@ -35,45 +35,28 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework;
 
-use Infection\AbstractTestFramework\Coverage\TestLocation;
+use RuntimeException;
 
-interface TestFrameworkAdapter
+final class UnsupportedTestFrameworkVersion extends RuntimeException
 {
-    public function getName(): string;
+    private $detectedVersion;
+    private $minimumSupportedVersion;
 
-    public function testsPass(string $output): bool;
+    public function __construct(string $detectedVersion, string $minimumSupportedVersion)
+    {
+        parent::__construct('', 0, null);
 
-    public function hasJUnitReport(): bool;
+        $this->detectedVersion = $detectedVersion;
+        $this->minimumSupportedVersion = $minimumSupportedVersion;
+    }
 
-    /**
-     * @param string[] $phpExtraArgs
-     *
-     * @return string[]
-     */
-    public function getInitialTestRunCommandLine(string $extraOptions, array $phpExtraArgs, bool $skipCoverage): array;
+    public function getDetectedVersion(): string
+    {
+        return $this->detectedVersion;
+    }
 
-    /**
-     * @param TestLocation[] $coverageTests
-     *
-     * @return string[]
-     */
-    public function getMutantCommandLine(
-        array $coverageTests,
-        string $mutatedFilePath,
-        string $mutationHash,
-        string $mutationOriginalFilePath,
-        string $extraOptions
-    ): array;
-
-    /**
-     * @throws InvalidVersion
-     */
-    public function getVersion(): string;
-
-    /**
-     * @throws UnsupportedTestFrameworkVersion
-     */
-    public function checkVersion(): void;
-
-    public function getInitialTestsFailRecommendations(string $commandLine): string;
+    public function getMinimumSupportedVersion(): string
+    {
+        return $this->minimumSupportedVersion;
+    }
 }

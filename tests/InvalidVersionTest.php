@@ -35,45 +35,21 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework;
 
-use Infection\AbstractTestFramework\Coverage\TestLocation;
+use Error;
+use PHPUnit\Framework\TestCase;
 
-interface TestFrameworkAdapter
+/**
+ * @covers \Infection\AbstractTestFramework\InvalidVersion
+ */
+final class InvalidVersionTest extends TestCase
 {
-    public function getName(): string;
+    public function test_it_can_be_instantiated(): void
+    {
+        $error = new Error();
+        $exception = new InvalidVersion('Foo', 0, $error);
 
-    public function testsPass(string $output): bool;
-
-    public function hasJUnitReport(): bool;
-
-    /**
-     * @param string[] $phpExtraArgs
-     *
-     * @return string[]
-     */
-    public function getInitialTestRunCommandLine(string $extraOptions, array $phpExtraArgs, bool $skipCoverage): array;
-
-    /**
-     * @param TestLocation[] $coverageTests
-     *
-     * @return string[]
-     */
-    public function getMutantCommandLine(
-        array $coverageTests,
-        string $mutatedFilePath,
-        string $mutationHash,
-        string $mutationOriginalFilePath,
-        string $extraOptions
-    ): array;
-
-    /**
-     * @throws InvalidVersion
-     */
-    public function getVersion(): string;
-
-    /**
-     * @throws UnsupportedTestFrameworkVersion
-     */
-    public function checkVersion(): void;
-
-    public function getInitialTestsFailRecommendations(string $commandLine): string;
+        $this->assertSame('Foo', $exception->getMessage());
+        $this->assertSame(0, $exception->getCode());
+        $this->assertSame($error, $exception->getPrevious());
+    }
 }

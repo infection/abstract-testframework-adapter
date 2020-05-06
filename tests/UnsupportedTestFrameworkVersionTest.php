@@ -35,45 +35,22 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework;
 
-use Infection\AbstractTestFramework\Coverage\TestLocation;
+use PHPUnit\Framework\TestCase;
 
-interface TestFrameworkAdapter
+/**
+ * @covers \Infection\AbstractTestFramework\UnsupportedTestFrameworkVersion
+ */
+final class UnsupportedTestFrameworkVersionTest extends TestCase
 {
-    public function getName(): string;
+    public function test_it_can_be_instantiated(): void
+    {
+        $exception = new UnsupportedTestFrameworkVersion('3.2.0', '6.0.0');
 
-    public function testsPass(string $output): bool;
+        $this->assertSame('3.2.0', $exception->getDetectedVersion());
+        $this->assertSame('6.0.0', $exception->getMinimumSupportedVersion());
 
-    public function hasJUnitReport(): bool;
-
-    /**
-     * @param string[] $phpExtraArgs
-     *
-     * @return string[]
-     */
-    public function getInitialTestRunCommandLine(string $extraOptions, array $phpExtraArgs, bool $skipCoverage): array;
-
-    /**
-     * @param TestLocation[] $coverageTests
-     *
-     * @return string[]
-     */
-    public function getMutantCommandLine(
-        array $coverageTests,
-        string $mutatedFilePath,
-        string $mutationHash,
-        string $mutationOriginalFilePath,
-        string $extraOptions
-    ): array;
-
-    /**
-     * @throws InvalidVersion
-     */
-    public function getVersion(): string;
-
-    /**
-     * @throws UnsupportedTestFrameworkVersion
-     */
-    public function checkVersion(): void;
-
-    public function getInitialTestsFailRecommendations(string $commandLine): string;
+        $this->assertSame('', $exception->getMessage());
+        $this->assertSame(0, $exception->getCode());
+        $this->assertNull($exception->getPrevious());
+    }
 }
