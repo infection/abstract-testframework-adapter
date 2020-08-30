@@ -1,0 +1,20 @@
+language: php
+php:
+  - 7.3
+  - 7.4
+  - nightly
+
+cache:
+  directories:
+    - $HOME/.composer
+    - build/cache
+
+install:
+  - phpenv config-rm xdebug.ini || true
+  - if [[ $TRAVIS_PHP_VERSION = nightly ]]; then export COMPOSER_FLAGS="--ignore-platform-reqs"; fi
+  - travis_retry composer install --prefer-dist $COMPOSER_FLAGS
+
+script:
+  - composer normalize --no-check-lock --diff --dry-run
+  - php vendor/bin/phpunit
+

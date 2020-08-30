@@ -1,7 +1,7 @@
 {
     "name": "infection/abstract-testframework-adapter",
-    "description": "Abstract Test Framework Adapter for Infection",
     "type": "library",
+    "description": "Abstract Test Framework Adapter for Infection",
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -9,10 +9,16 @@
             "email": "maks.rafalko@gmail.com"
         }
     ],
+    "require": {
+        "php": "^7.3 || ^8.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.8",
+        "phpunit/phpunit": "^9.0"
+    },
     "config": {
         "sort-packages": true
     },
-
     "autoload": {
         "psr-4": {
             "Infection\\AbstractTestFramework\\": "src/"
@@ -22,12 +28,5 @@
         "psr-4": {
             "Infection\\AbstractTestFramework\\": "tests/"
         }
-    },
-
-    "require": {
-        "php": "^7.3 || ^8.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0"
     }
 }
