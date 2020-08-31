@@ -65,15 +65,7 @@ interface TestFrameworkAdapter
         string $extraOptions
     ): array;
 
-    /**
-     * @throws InvalidVersion
-     */
     public function getVersion(): string;
-
-    /**
-     * @throws UnsupportedTestFrameworkVersion
-     */
-    public function checkVersion(): void;
 
     public function getInitialTestsFailRecommendations(string $commandLine): string;
 }
