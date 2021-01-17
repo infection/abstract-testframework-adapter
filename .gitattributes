@@ -1,0 +1,12 @@
+*.php text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+
+# Directories and files we do not want to distribute
+/.*                     export-ignore
+/docs/                  export-ignore
+/tests/                 export-ignore
+/codecov.yml            export-ignore
+/phpunit.xml.dist       export-ignore
