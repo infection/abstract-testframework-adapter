@@ -37,9 +37,9 @@ namespace Infection\AbstractTestFramework\Coverage;
 
 final class TestLocation
 {
-    private $method;
-    private $filePath;
-    private $executionTime;
+    private string $method;
+    private ?string $filePath;
+    private ?float $executionTime;
 
     public function __construct(string $method, ?string $filePath, ?float $executionTime)
     {
