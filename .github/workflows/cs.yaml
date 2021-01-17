@@ -1,0 +1,37 @@
+name: Coding Standards
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  coding-standards:
+    name: Coding Standards
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Restore PHP-CS-Fixer cache
+        uses: actions/cache@v2
+        with:
+          path: .php_cs.cache
+          key: "php-cs-fixer"
+          restore-keys: "php-cs-fixer"
+
+      - name: Run PHP-CS-Fixer
+        run: |
+          vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --dry-run --verbose
+
+      - name: Run Composer Normalize
+        run: |
+          composer normalize --no-check-lock --diff --dry-run
