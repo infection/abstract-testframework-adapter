@@ -35,40 +35,10 @@ declare(strict_types=1);
 
 namespace Infection\AbstractTestFramework;
 
-use Infection\AbstractTestFramework\Coverage\TestLocation;
-
-interface TestFrameworkAdapter
+interface ChecksMinimumSupportedVersion
 {
-    public function getName(): string;
-
-    public function testsPass(string $output): bool;
-
-    public function hasJUnitReport(): bool;
-
     /**
-     * @param string[] $phpExtraArgs
-     *
-     * @return string[]
+     * @throws UnsupportedTestFrameworkVersion
      */
-    public function getInitialTestRunCommandLine(string $extraOptions, array $phpExtraArgs, bool $skipCoverage): array;
-
-    /**
-     * @param TestLocation[] $coverageTests
-     *
-     * @return string[]
-     */
-    public function getMutantCommandLine(
-        array $coverageTests,
-        string $mutatedFilePath,
-        string $mutationHash,
-        string $mutationOriginalFilePath,
-        string $extraOptions
-    ): array;
-
-    /**
-     * @throws InvalidVersion
-     */
-    public function getVersion(): string;
-
-    public function getInitialTestsFailRecommendations(string $commandLine): string;
+    public function checkVersion(): void;
 }
