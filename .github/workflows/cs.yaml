@@ -49,7 +49,7 @@ jobs:
 
       - name: Run PHP-CS-Fixer
         run: |
-          vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --dry-run --verbose
+          vendor/bin/php-cs-fixer fix --diff --dry-run --verbose
 
       - name: Run Composer Normalize
         run: |
