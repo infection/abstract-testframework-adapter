@@ -39,7 +39,7 @@ use PhpCsFixer\Finder;
 $header = trim(sprintf(
     'This code is licensed under the BSD 3-Clause License.%s',
     substr(
-        file_get_contents('LICENSE'),
+        file_get_contents(__DIR__ . '/LICENSE'),
         strlen('BSD 3-Clause License')
     )
 ));
@@ -47,28 +47,15 @@ $header = trim(sprintf(
 $finder = Finder::create()
     ->in(__DIR__)
     ->exclude([
-        '.ci',
-        '.composer',
         '.github',
-        '.tools',
-        'build',
-        'devTools',
-        'resources',
-        'tests/autoloaded',
-        'tests/benchmark/MutationGenerator/sources',
-        'tests/benchmark/Tracing/coverage',
-        'tests/benchmark/Tracing/sources',
-        'tests/e2e',
-        'tests/phpunit/Fixtures',
+        'docs',
     ])
     ->ignoreDotFiles(false)
     ->name('*php')
-    ->name('.php_cs.dist')
-    ->name('infection')
-    ->name('infection-debug')
+    ->append([__FILE__])
 ;
 
-return Config::create()
+return (new Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PHP71Migration' => true,
@@ -100,7 +87,6 @@ return Config::create()
         ],
         'compact_nullable_typehint' => true,
         'concat_space' => ['spacing' => 'one'],
-        'final_static_access' => true,
         'fully_qualified_strict_types' => true,
         'global_namespace_import' => [
             'import_classes' => true,
@@ -108,7 +94,7 @@ return Config::create()
             'import_functions' => true,
         ],
         'header_comment' => [
-            'commentType' => 'PHPDoc',
+            'comment_type' => 'PHPDoc',
             'header' => $header,
             'location' => 'after_open',
             'separate' => 'bottom',
@@ -131,15 +117,16 @@ return Config::create()
         'phpdoc_align' => [
             'align' => 'left',
         ],
+        'phpdoc_order_by_value' => [
+            'annotations' => ['covers'],
+        ],
         'php_unit_dedicate_assert' => true,
         'php_unit_method_casing' => [
             'case' => 'snake_case',
         ],
         'php_unit_set_up_tear_down_visibility' => true,
         'php_unit_strict' => true,
-        'php_unit_ordered_covers' => true,
         'php_unit_test_annotation' => [
-            'case' => 'snake',
             'style' => 'prefix',
         ],
         'php_unit_test_case_static_method_calls' => [
