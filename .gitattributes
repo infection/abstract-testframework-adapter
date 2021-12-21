@@ -8,5 +8,4 @@
 /.*                     export-ignore
 /docs/                  export-ignore
 /tests/                 export-ignore
-/codecov.yml            export-ignore
-/phpunit.xml.dist       export-ignore
+/phpunit.xml            export-ignore
