@@ -33,27 +33,22 @@
 
 namespace Infection\AbstractTestFramework\Coverage;
 
-final class TestLocation
+final readonly class TestLocation
 {
-    private string $method;
-
-    private ?string $filePath;
-
-    private ?float $executionTime;
-
     public function __construct(
-        string $method,
-        ?string $filePath,
-        ?float $executionTime,
+        private string $method,
+        private ?string $filePath,
+        private ?float $executionTime,
     ) {
-        $this->method = $method;
-        $this->filePath = $filePath;
-        $this->executionTime = $executionTime;
     }
 
     public static function forTestMethod(string $testMethod): self
     {
-        return new self($testMethod, null, null);
+        return new self(
+            method: $testMethod,
+            filePath: null,
+            executionTime: null,
+        );
     }
 
     public function getMethod(): string
