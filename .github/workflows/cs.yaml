@@ -47,10 +47,5 @@ jobs:
         run: |
           composer install --no-interaction --no-progress --no-suggest --prefer-dist
 
-      - name: Run PHP-CS-Fixer
-        run: |
-          vendor/bin/php-cs-fixer fix --diff --dry-run --verbose
-
-      - name: Run Composer Normalize
-        run: |
-          composer normalize --no-check-lock --diff --dry-run
+      - name: Run coding standard checks
+        run: make cs-lint

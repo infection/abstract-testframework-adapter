@@ -51,5 +51,4 @@ jobs:
           composer install --no-interaction --no-progress --no-suggest --prefer-dist
 
       - name: Run tests
-        run: |
-          vendor/bin/phpunit
+        run: make test-unit
