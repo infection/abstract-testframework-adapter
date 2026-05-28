@@ -15,9 +15,13 @@ check: cs-lint test-unit
 
 .PHONY: cs
 cs:		## Applies coding standard fixes
-cs: vendor/autoload.php
+cs: gitsortignore vendor/autoload.php
 	vendor/bin/php-cs-fixer fix --diff --verbose
 	composer normalize --no-check-lock --diff
+
+.PHONY: gitsortignore
+gitsortignore:	## Sort .gitignore
+	LC_ALL=C sort -u .gitignore -o .gitignore
 
 .PHONY: cs-lint
 cs-lint:	## Runs coding standard checks
