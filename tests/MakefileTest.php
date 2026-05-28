@@ -56,7 +56,9 @@ final class MakefileTest extends BaseMakefileTestCase
             . "\n"
             . "\033[33mcheck:\033[0m\t\t Runs all checks\n"
             . "\033[33mcs:\033[0m\t\t Applies coding standard fixes\n"
+            . "\033[33mgitsortignore:\033[0m\t Sort .gitignore\n"
             . "\033[33mcs-lint:\033[0m\t Runs coding standard checks\n"
-            . "\033[33mtest-unit:\033[0m\t Runs the unit tests\n";
+            . "\033[33mtest-unit:\033[0m\t Runs the unit tests\n"
+            . "\033[33mzizmor:\033[0m\t\t Audits GitHub Actions workflows\n";
     }
 }
