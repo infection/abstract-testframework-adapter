@@ -35,7 +35,9 @@
 namespace Infection\AbstractTestFramework;
 
 use Fidry\Makefile\Test\BaseMakefileTestCase;
+use PHPUnit\Framework\Attributes\CoversNothing;
 
+#[CoversNothing]
 final class MakefileTest extends BaseMakefileTestCase
 {
     protected static function getMakefilePath(): string

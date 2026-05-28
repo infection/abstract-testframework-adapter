@@ -7,19 +7,17 @@
          executionOrder="random"
          failOnWarning="true"
          failOnRisky="true"
-         verbose="true"
+         cacheDirectory=".phpunit.cache"
 >
-
     <testsuites>
         <testsuite name="Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory>src</directory>
-        </whitelist>
-    </filter>
-
+        </include>
+    </source>
 </phpunit>

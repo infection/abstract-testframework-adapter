@@ -34,11 +34,10 @@
 namespace Infection\AbstractTestFramework;
 
 use Error;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Infection\AbstractTestFramework\InvalidVersion
- */
+#[CoversClass(InvalidVersion::class)]
 final class InvalidVersionTest extends TestCase
 {
     public function test_it_can_be_instantiated(): void

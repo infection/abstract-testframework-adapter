@@ -33,11 +33,10 @@
 
 namespace Infection\AbstractTestFramework\Coverage;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Infection\AbstractTestFramework\Coverage\TestLocation
- */
+#[CoversClass(TestLocation::class)]
 final class TestLocationTest extends TestCase
 {
     public function test_it_can_be_instantiated_for_a_method(): void
