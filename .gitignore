@@ -1,5 +1,7 @@
+!/var/.gitkeep
 /.composer/
 /.idea
 /.php-cs-fixer.cache
 /composer.lock
+/var/*
 /vendor/

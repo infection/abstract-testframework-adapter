@@ -31,8 +31,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-declare(strict_types=1);
-
 namespace Infection\AbstractTestFramework;
 
 interface TestFrameworkAdapterFactory
@@ -45,7 +43,7 @@ interface TestFrameworkAdapterFactory
         string $jUnitFilePath,
         string $projectDir,
         array $sourceDirectories,
-        bool $skipCoverage
+        bool $skipCoverage,
     ): TestFrameworkAdapter;
 
     public static function getAdapterName(): string;

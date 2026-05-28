@@ -31,8 +31,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-declare(strict_types=1);
-
 namespace Infection\AbstractTestFramework\Coverage;
 
 use PHPUnit\Framework\TestCase;
@@ -50,7 +48,7 @@ final class TestLocationTest extends TestCase
             $testLocation,
             'mutatesNode',
             null,
-            null
+            null,
         );
     }
 
@@ -62,7 +60,7 @@ final class TestLocationTest extends TestCase
             $testLocation,
             'mutatesNode',
             'path/to/Test.php',
-            0.123
+            0.123,
         );
     }
 
@@ -70,7 +68,7 @@ final class TestLocationTest extends TestCase
         TestLocation $testLocation,
         string $expectedMethod,
         ?string $expectedFilePath,
-        ?float $expectedExecutionTime
+        ?float $expectedExecutionTime,
     ): void {
         $this->assertSame($expectedMethod, $testLocation->getMethod());
         $this->assertSame($expectedFilePath, $testLocation->getFilePath());

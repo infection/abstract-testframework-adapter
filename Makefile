@@ -19,8 +19,7 @@ check: cs-lint test-unit zizmor
 
 .PHONY: cs
 cs:		## Applies coding standard fixes
-cs: composer-normalize gitsortignore vendor/autoload.php
-	$(PHP_CS_FIXER) fix --diff --verbose
+cs: composer-normalize gitsortignore php-cs-fixer
 
 .PHONY: composer-normalize
 # Normalizes composer.json
@@ -34,7 +33,16 @@ gitsortignore:
 
 .PHONY: cs-lint
 cs-lint:	## Runs coding standard checks
-cs-lint: composer-normalize-lint composer-validate vendor/autoload.php
+cs-lint: composer-normalize-lint composer-validate php-cs-fixer-lint
+
+.PHONY: php-cs-fixer
+# Applies PHP-CS-Fixer fixes
+php-cs-fixer: vendor/autoload.php
+	$(PHP_CS_FIXER) fix --diff --verbose
+
+.PHONY: php-cs-fixer-lint
+# Checks PHP-CS-Fixer rules
+php-cs-fixer-lint: vendor/autoload.php
 	$(PHP_CS_FIXER) fix --diff --dry-run --verbose
 
 .PHONY: composer-normalize-lint

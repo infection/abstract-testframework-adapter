@@ -31,8 +31,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-declare(strict_types=1);
-
 namespace Infection\AbstractTestFramework;
 
 interface MemoryUsageAware

@@ -31,18 +31,21 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-declare(strict_types=1);
-
 namespace Infection\AbstractTestFramework\Coverage;
 
 final class TestLocation
 {
     private string $method;
+
     private ?string $filePath;
+
     private ?float $executionTime;
 
-    public function __construct(string $method, ?string $filePath, ?float $executionTime)
-    {
+    public function __construct(
+        string $method,
+        ?string $filePath,
+        ?float $executionTime,
+    ) {
         $this->method = $method;
         $this->filePath = $filePath;
         $this->executionTime = $executionTime;
