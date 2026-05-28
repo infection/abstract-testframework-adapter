@@ -11,6 +11,7 @@ help:
 
 DOCKER_COMPOSE ?= docker compose
 PHP_CS_FIXER=vendor/bin/php-cs-fixer
+RECTOR=vendor/bin/rector
 ZIZMOR ?= $(DOCKER_COMPOSE) run --rm zizmor
 
 .PHONY: check
@@ -19,7 +20,7 @@ check: cs-lint test-unit zizmor
 
 .PHONY: cs
 cs:		## Applies coding standard fixes
-cs: composer-normalize gitsortignore php-cs-fixer
+cs: composer-normalize gitsortignore php-cs-fixer rector
 
 .PHONY: composer-normalize
 # Normalizes composer.json
@@ -33,7 +34,7 @@ gitsortignore:
 
 .PHONY: cs-lint
 cs-lint:	## Runs coding standard checks
-cs-lint: composer-normalize-lint composer-validate php-cs-fixer-lint
+cs-lint: composer-normalize-lint composer-validate php-cs-fixer-lint rector-lint
 
 .PHONY: php-cs-fixer
 # Applies PHP-CS-Fixer fixes
@@ -44,6 +45,16 @@ php-cs-fixer: vendor/autoload.php
 # Checks PHP-CS-Fixer rules
 php-cs-fixer-lint: vendor/autoload.php
 	$(PHP_CS_FIXER) fix --diff --dry-run --verbose
+
+.PHONY: rector
+# Applies Rector fixes
+rector: vendor/autoload.php
+	$(RECTOR) process
+
+.PHONY: rector-lint
+# Checks Rector rules
+rector-lint: vendor/autoload.php
+	$(RECTOR) process --dry-run
 
 .PHONY: composer-normalize-lint
 # Checks composer.json normalization
