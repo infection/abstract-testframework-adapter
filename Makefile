@@ -24,6 +24,7 @@ cs: gitsortignore vendor/autoload.php
 
 .PHONY: gitsortignore
 gitsortignore:	## Sort .gitignore
+gitsortignore:
 	LC_ALL=C sort -u .gitignore -o .gitignore
 
 .PHONY: cs-lint
