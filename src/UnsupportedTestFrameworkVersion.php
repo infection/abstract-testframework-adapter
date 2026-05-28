@@ -31,8 +31,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-declare(strict_types=1);
-
 namespace Infection\AbstractTestFramework;
 
 use RuntimeException;
@@ -40,6 +38,7 @@ use RuntimeException;
 final class UnsupportedTestFrameworkVersion extends RuntimeException
 {
     private string $detectedVersion;
+
     private string $minimumSupportedVersion;
 
     public function __construct(string $detectedVersion, string $minimumSupportedVersion)

@@ -31,8 +31,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-declare(strict_types=1);
-
 namespace Infection\AbstractTestFramework;
 
 use Infection\AbstractTestFramework\Coverage\TestLocation;
@@ -62,7 +60,7 @@ interface TestFrameworkAdapter
         string $mutatedFilePath,
         string $mutationHash,
         string $mutationOriginalFilePath,
-        string $extraOptions
+        string $extraOptions,
     ): array;
 
     /**
