@@ -33,11 +33,10 @@
 
 namespace Infection\AbstractTestFramework;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Infection\AbstractTestFramework\UnsupportedTestFrameworkVersion
- */
+#[CoversClass(UnsupportedTestFrameworkVersion::class)]
 final class UnsupportedTestFrameworkVersionTest extends TestCase
 {
     public function test_it_can_be_instantiated(): void
