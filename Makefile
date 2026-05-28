@@ -9,9 +9,12 @@ help:
 	@printf "\033[33mUsage:\033[0m\n  make TARGET\n\n\033[32m#\n# Commands\n#---------------------------------------------------------------------------\033[0m\n\n"
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | awk 'BEGIN {FS = ":"}; {printf "\033[33m%s:\033[0m%s\n", $$1, $$2}'
 
+ZIZMOR_DOCKER_IMAGE ?= ghcr.io/zizmorcore/zizmor:1.25.2
+ZIZMOR ?= docker run --rm --volume "$(CURDIR):/workspace" --workdir /workspace $(ZIZMOR_DOCKER_IMAGE)
+
 .PHONY: check
 check:		## Runs all checks
-check: cs-lint test-unit
+check: cs-lint test-unit zizmor
 
 .PHONY: cs
 cs:		## Applies coding standard fixes
@@ -34,6 +37,11 @@ cs-lint: vendor/autoload.php
 test-unit:	## Runs the unit tests
 test-unit: vendor/autoload.php
 	vendor/bin/phpunit
+
+.PHONY: zizmor
+zizmor:		## Audits GitHub Actions workflows
+zizmor:
+	$(ZIZMOR) .github/workflows
 
 vendor/autoload.php:
 	composer install --prefer-dist
