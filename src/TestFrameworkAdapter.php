@@ -48,7 +48,11 @@ interface TestFrameworkAdapter
      *
      * @return string[]
      */
-    public function getInitialTestRunCommandLine(string $extraOptions, array $phpExtraArgs, bool $skipCoverage): array;
+    public function getInitialTestRunCommandLine(
+        string $extraOptions,
+        array $phpExtraArgs,
+        bool $skipCoverage,
+    ): array;
 
     /**
      * @param TestLocation[] $coverageTests

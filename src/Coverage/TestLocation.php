@@ -41,8 +41,11 @@ final class TestLocation
 
     private ?float $executionTime;
 
-    public function __construct(string $method, ?string $filePath, ?float $executionTime)
-    {
+    public function __construct(
+        string $method,
+        ?string $filePath,
+        ?float $executionTime,
+    ) {
         $this->method = $method;
         $this->filePath = $filePath;
         $this->executionTime = $executionTime;

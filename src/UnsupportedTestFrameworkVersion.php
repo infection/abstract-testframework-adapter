@@ -41,8 +41,10 @@ final class UnsupportedTestFrameworkVersion extends RuntimeException
 
     private string $minimumSupportedVersion;
 
-    public function __construct(string $detectedVersion, string $minimumSupportedVersion)
-    {
+    public function __construct(
+        string $detectedVersion,
+        string $minimumSupportedVersion,
+    ) {
         parent::__construct();
 
         $this->detectedVersion = $detectedVersion;
