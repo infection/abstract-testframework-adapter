@@ -29,6 +29,13 @@ graph TB
     style OtherAdapters fill:#f9f9f9,stroke-dasharray: 5 5
 ```
 
+Please read documentation here: [infection.github.io][doc]
+
+* Twitter: [@infection_php][twitter]
+* Mastodon: [@infection_php][mastodon]
+* Discord: https://discord.gg/ZUmyHTJ
+* [Playground](https://infection-php.dev/) - try it right in your browser!
+
 ## Installation
 
 This package is meant to be used by Infection test framework adapters. In a standard usage, it is installed as a dependency of a concrete adapter such as [`infection/phpspec-adapter`][infection/phpspec-adapter] or
@@ -58,9 +65,12 @@ Contributions are welcome! Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 This project is licensed under the BSD 3-Clause License. See the [LICENSE](LICENSE) file for details.
 
 
+[doc]: http://infection.github.io
 [infection]: https://infection.github.io
 [infection-configuration-docs]: https://infection.github.io/guide/usage.html#Configuration
 [infection/codeception-adapter]: https://packagist.org/packages/infection/codeception-adapter
 [infection/phpspec-adapter]: https://packagist.org/packages/infection/phpspec-adapter
 [test-framework-adapter]: ./src/TestFrameworkAdapter.php
 [test-framework-adapter-factory]: ./src/TestFrameworkAdapterFactory.php
+[twitter]: http://twitter.com/infection_php
+[mastodon]: https://mastodon.social/@infection_php
