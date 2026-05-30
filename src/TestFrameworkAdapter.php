@@ -39,6 +39,14 @@ interface TestFrameworkAdapter
 {
     public function getName(): string;
 
+    /**
+     * Checks that the version of the tool used is compatible with the adapter.
+     *
+     * Additionally, some test frameworks may require artefacts to work with. For example, PHPUnit
+     * requires a code coverage report. PHPStan will require an up-to-date cache.
+     */
+    public function checkRequirements(): void;
+
     public function testsPass(string $output): bool;
 
     public function hasJUnitReport(): bool;
