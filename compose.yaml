@@ -1,6 +1,6 @@
 services:
     zizmor:
-        image: ghcr.io/zizmorcore/zizmor:1.25.2
+        image: ghcr.io/zizmorcore/zizmor:1.26.1
         environment:
             GH_TOKEN: ${GH_TOKEN:-}
         working_dir: /workspace
